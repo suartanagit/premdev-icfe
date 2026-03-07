@@ -1,4 +1,18 @@
 <script setup>
+import MainFooter from './components/MainFooter.vue'
+import MainNavbar from './components/MainNavbar.vue'
+import HeroSection from './components/HeroSection.vue'
+</script>
+
+<template>
+  <MainNavbar />
+  <HeroSection />
+  <MainFooter />
+</template>
+
+<style scoped></style>
+
+<!-- <script setup>
 </script>
 
 <template>
@@ -10,7 +24,7 @@
       </p>
     </div>
   </main>
-</template>
+</template> -->
 
 
 
