@@ -1,4 +1,20 @@
 <script setup>
+</script>
+
+<template>
+  <main class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="text-center p-8 bg-white rounded-xl shadow-lg">
+      <p class="text-gray-600">
+	      Hello World
+        Setup Vue.js dan Tailwind CSS v4 berhasil!
+      </p>
+    </div>
+  </main>
+</template>
+
+
+
+<!-- <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 </script>
@@ -82,4 +98,4 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
-</style>
+</style> -->
