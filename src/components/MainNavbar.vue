@@ -18,10 +18,12 @@ import {
 
         <!-- AREA MENU NAVBAR -->
         <nav class="hidden md:flex items-center gap-8 font-medium flex-2 justify-center">
+          <router-link to="/" class="btn-about">Home</router-link>
           <a href="#" class="hover:text-gray-700 text-gray-600">Pria</a>
           <a href="#" class="hover:text-gray-700 text-gray-600">Wanita</a>
           <a href="#" class="hover:text-gray-700 text-gray-600">Anak - Anak</a>
           <a href="#" class="hover:text-gray-700 text-gray-600">Promo</a>
+          <router-link to="/about" class="btn-about">About</router-link>
         </nav>
 
         <!-- AREA ACTION -->
@@ -29,11 +31,7 @@ import {
           <!-- SEARCH BAR -->
           <div class="hidden sm:flex items-center bg-gray-100 rounded-full px-3 py-1.5">
             <MagnifyingGlassIcon class="w-4 h-4 text-gray-500" />
-            <input
-              type="text"
-              placeholder="Search"
-              class="bg-transparent outline-none px-2 text-sm w-28"
-            />
+            <input type="text" placeholder="Search" class="bg-transparent outline-none px-2 text-sm w-28" />
           </div>
 
           <!-- ACTION BUTTON -->

@@ -1,9 +1,14 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import HeroSection from '../components/HeroSection.vue'
+import ProductsSection from '../components/sections/ProductsSection.vue'
+import ProductDetailView from './ProductDetailView.vue';
+
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div>
+    <HeroSection />
+    <!-- <ProductsSection /> -->
+    <ProductDetailView />
+  </div>
 </template>
