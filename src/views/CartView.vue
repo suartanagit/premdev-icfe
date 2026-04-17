@@ -1,6 +1,11 @@
 <script setup>
 import { TruckIcon, ShieldCheckIcon, CreditCardIcon, ClockIcon } from '@heroicons/vue/24/outline'
 import { cart } from '@/stores/cart'
+
+// Format harga ke format Indonesia
+function formatPrice(price) {
+  return (price * 1000).toLocaleString('id-ID')
+}
 </script>
 
 <template>
@@ -16,9 +21,15 @@ import { cart } from '@/stores/cart'
 
           <div class="col-span-2">
             <p class="font-semibold">{{ item.name }}</p>
-            <p class="text-sm text-gray-500">IDR {{ item.price }}K</p>
+            <p class="text-sm text-gray-500">IDR {{ formatPrice(item.price) }}</p>
           </div>
 
+          <div class="flex items-center gap-3">
+            <button @click="cart.decrease(item.id)">-</button>
+            <span>{{ item.qty }}</span>
+            <button @click="cart.add(item)">+</button>
+            <button @click="cart.remove(item.id)" class="text-red-500 text-sm">Hapus</button>
+          </div>
           <div class="flex items-center gap-3">
             <span>Qty: {{ item.qty }}</span>
             <button @click="cart.remove(item.id)" class="text-red-500 text-sm">Hapus</button>
@@ -39,7 +50,7 @@ import { cart } from '@/stores/cart'
 
           <div class="flex justify-between text-gray-500">
             <span>Subtotal</span>
-            <span>IDR {{ cart.totalPrice }}K</span>
+            <span>IDR {{ formatPrice(cart.totalPrice) }}</span>
           </div>
 
           <div class="flex justify-between text-gray-500">
@@ -49,7 +60,7 @@ import { cart } from '@/stores/cart'
 
           <div class="border-t border-gray-100 pt-3 flex justify-between font-semibold text-lg">
             <span>Total</span>
-            <span>IDR {{ cart.totalPrice }}K</span>
+            <span>IDR {{ formatPrice(cart.totalPrice) }}</span>
           </div>
         </div>
 

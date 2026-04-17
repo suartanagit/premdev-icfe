@@ -21,6 +21,18 @@ function remove(id) {
   state.items = state.items.filter((item) => item.id !== id)
 }
 
+// Kurangi qty produk, kalau qty === 1 maka hapus
+function decrease(id) {
+  const item = state.items.find((item) => item.id === id)
+  if (item) {
+    if (item.qty === 1) {
+      remove(id)
+    } else {
+      item.qty--
+    }
+  }
+}
+
 // Hitung total qty semua item
 const totalItems = computed(() =>
   state.items.reduce((sum, item) => sum + item.qty, 0)
@@ -36,6 +48,7 @@ export const cart = {
   state,
   add,
   remove,
+  decrease,
   totalItems,
   totalPrice,
 }

@@ -8,6 +8,11 @@ const props = defineProps({
   id: String
 })
 
+// Format harga ke format Indonesia
+function formatPrice(price) {
+  return (price * 1000).toLocaleString('id-ID')
+}
+
 // Dummy data produk (seharusnya dari API/database)
 const products = [
   {
@@ -92,7 +97,7 @@ const product = computed(() => {
 
       <div class="space-y-4">
         <h1 class="text-3xl font-bold">{{ product.name }}</h1>
-        <p class="text-2xl font-semibold text-blue-600">IDR {{ product.price }}K</p>
+        <p class="text-2xl font-semibold text-blue-600">IDR {{ formatPrice(product.price) }}</p>
         <!-- <p class="text-gray-600 leading-relaxed">{{ product.description }}</p> -->
 
         <div class="space-y-2 text-sm text-gray-600 pt-2 border-t">
