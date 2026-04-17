@@ -5,6 +5,8 @@ import {
   ShoppingBagIcon,
   Bars3Icon,
 } from '@heroicons/vue/24/outline'
+import { RouterLink } from 'vue-router'
+import { cart } from '@/stores/cart'
 </script>
 
 <template>
@@ -39,9 +41,15 @@ import {
             <HeartIcon class="w-5 h-5" />
           </button>
 
-          <button class="p-2 hover:bg-gray-100 rounded-full">
+          <RouterLink to="/cart" class="p-2 hover:bg-gray-100 rounded-full relative">
             <ShoppingBagIcon class="w-5 h-5" />
-          </button>
+            <span
+              v-if="cart.totalItems"
+              class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full"
+            >
+              {{ cart.totalItems }}
+            </span>
+          </RouterLink>
 
           <!-- ACTION BUTTON MOBILE -->
           <button class="md:hidden p-2 hover:bg-gray-100 rounded-full">

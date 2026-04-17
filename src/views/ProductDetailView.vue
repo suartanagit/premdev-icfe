@@ -1,8 +1,12 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
+import { cart } from '@/stores/cart'
 
 const route = useRoute()
+const props = defineProps({
+  id: String
+})
 
 // Dummy data produk (seharusnya dari API/database)
 const products = [
@@ -65,9 +69,10 @@ const products = [
   // (Tambahkan sisa data dummy produk lainnya di sini)
 ]
 
-// Cari produk berdasarkan ID dari route params
+// Cari produk berdasarkan ID dari props atau route params
 const product = computed(() => {
-  return products.find(p => p.id === Number(route.params.id))
+  const productId = Number(props.id || route.params.id)
+  return products.find(p => p.id === productId)
 })
 </script>
 
@@ -97,7 +102,8 @@ const product = computed(() => {
         </div>
 
         <div class="flex gap-4 pt-4">
-          <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+          <button @click="cart.add(product)"
+            class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
             Add to Cart
           </button>
           <button class="border border-gray-300 px-6 py-3 rounded-lg hover:bg-gray-50 transition">
