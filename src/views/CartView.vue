@@ -1,6 +1,7 @@
 <script setup>
 import { TruckIcon, ShieldCheckIcon, CreditCardIcon, ClockIcon } from '@heroicons/vue/24/outline'
 import { cart } from '@/stores/cart'
+import { RouterLink } from 'vue-router'
 
 // Format harga ke format Indonesia
 function formatPrice(price) {
@@ -87,9 +88,10 @@ function formatPrice(price) {
           </div>
         </div>
 
-        <button class="w-full bg-blue-600 text-white py-3 rounded-xl font-medium hover:bg-blue-700 transition">
+        <RouterLink to="/checkout" class="block w-full bg-blue-600 text-white py-3 rounded-xl font-medium
+                hover:bg-blue-700 transition text-center">
           Checkout Sekarang
-        </button>
+        </RouterLink>
 
         <p class="text-xs text-gray-400 text-center">Transaksi aman & terenkripsi.</p>
       </div>

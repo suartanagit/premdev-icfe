@@ -4,6 +4,7 @@ import {
   HeartIcon,
   ShoppingBagIcon,
   Bars3Icon,
+  UserIcon,
 } from '@heroicons/vue/24/outline'
 import { RouterLink } from 'vue-router'
 import { cart } from '@/stores/cart'
@@ -35,6 +36,11 @@ import { cart } from '@/stores/cart'
             <MagnifyingGlassIcon class="w-4 h-4 text-gray-500" />
             <input type="text" placeholder="Search" class="bg-transparent outline-none px-2 text-sm w-28" />
           </div>
+
+          <!-- ACTION BUTTON -->
+          <RouterLink to="/login" class="p-2 hover:bg-gray-100 rounded-full" title="Masuk">
+            <UserIcon class="w-5 h-5" />
+          </RouterLink>
 
           <!-- ACTION BUTTON -->
           <button class="p-2 hover:bg-gray-100 rounded-full">
