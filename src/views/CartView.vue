@@ -18,11 +18,14 @@ function formatPrice(price) {
       <div class="md:col-span-2 flex flex-col gap-4">
         <div v-for="item in cart.state.items" :key="item.id"
           class="grid grid-cols-4 items-center gap-4 rounded-xl p-4 bg-white shadow-sm ring-1 ring-gray-100">
-          <img :src="item.image" class="w-20 h-20 object-cover rounded" />
+          // Gambar item di cart
+          <img :src="item.image" class="w-20 h-20 object-contain bg-white rounded p-1" />
 
           <div class="col-span-2">
-            <p class="font-semibold">{{ item.name }}</p>
-            <p class="text-sm text-gray-500">IDR {{ formatPrice(item.price) }}</p>
+            // Nama produk
+            <p class="font-semibold line-clamp-1">{{ item.name }}</p>
+            // Harga
+            <p class="text-sm text-gray-500">${{ item.price }}</p>
           </div>
 
           <div class="flex items-center gap-3">
@@ -51,7 +54,7 @@ function formatPrice(price) {
 
           <div class="flex justify-between text-gray-500">
             <span>Subtotal</span>
-            <span>IDR {{ formatPrice(cart.totalPrice) }}</span>
+            <span>IDR {{ cart.totalPrice }}</span>
           </div>
 
           <div class="flex justify-between text-gray-500">
@@ -61,7 +64,7 @@ function formatPrice(price) {
 
           <div class="border-t border-gray-100 pt-3 flex justify-between font-semibold text-lg">
             <span>Total</span>
-            <span>IDR {{ formatPrice(cart.totalPrice) }}</span>
+            <span>IDR {{ cart.totalPrice }}</span>
           </div>
         </div>
 
