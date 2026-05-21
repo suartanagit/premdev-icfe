@@ -8,6 +8,9 @@ import {
 } from '@heroicons/vue/24/outline'
 import { RouterLink } from 'vue-router'
 import { cart } from '@/stores/cart'
+import { auth } from '@/stores/auth'
+import { ArrowRightStartOnRectangleIcon } from '@heroicons/vue/24/outline'
+
 </script>
 
 <template>
@@ -38,9 +41,15 @@ import { cart } from '@/stores/cart'
           </div>
 
           <!-- ACTION BUTTON -->
-          <RouterLink to="/login" class="p-2 hover:bg-gray-100 rounded-full" title="Masuk">
+          <!-- Jika belum login: tampilkan tombol masuk -->
+          <RouterLink v-if="!auth.isLoggedIn.value" to="/login" class="p-2 hover:bg-gray-100 rounded-full"
+            title="Masuk">
             <UserIcon class="w-5 h-5" />
           </RouterLink>
+          <!-- Jika sudah login: tampilkan tombol keluar -->
+          <button v-else @click="auth.logout()" class="p-2 hover:bg-gray-100 rounded-full" title="Keluar">
+            <ArrowRightStartOnRectangleIcon class="w-5 h-5" />
+          </button>
 
           <!-- ACTION BUTTON -->
           <button class="p-2 hover:bg-gray-100 rounded-full">
@@ -49,10 +58,8 @@ import { cart } from '@/stores/cart'
 
           <RouterLink to="/cart" class="p-2 hover:bg-gray-100 rounded-full relative">
             <ShoppingBagIcon class="w-5 h-5" />
-            <span
-              v-if="cart.totalItems"
-              class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full"
-            >
+            <span v-if="cart.totalItems"
+              class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
               {{ cart.totalItems }}
             </span>
           </RouterLink>

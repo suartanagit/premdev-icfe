@@ -5,6 +5,7 @@ import ProductDetailView from '../views/ProductDetailView.vue'
 import CartView from '../views/CartView.vue'
 import LoginView from '@/views/LoginView.vue'
 import CheckoutView from '../views/CheckoutView.vue'
+import { auth } from '@/stores/auth'
 
 // Definisi Routes: Mapping URL ke Component
 const routes = [
@@ -36,6 +37,7 @@ const routes = [
 {
   path: '/checkout',
   component: CheckoutView,
+  meta: { requiresAuth: true },
 },
 ]
 
@@ -43,4 +45,11 @@ const routes = [
 export const router = createRouter({
   history: createWebHistory(),  // Mode history (URL tanpa #)
   routes,                       // Daftar routes kita
+})
+
+// Pasang guard di bawah createRouter()
+router.beforeEach((to) => {
+  if (to.meta.requiresAuth && !auth.isLoggedIn.value) {
+    return '/login'
+  }
 })
