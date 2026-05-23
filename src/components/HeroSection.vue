@@ -2,7 +2,7 @@
 
 </script>
 <template>
-  <section class="min-h-screen bg-cover bg-center flex bg-url[('/src/assets/images/hero.jpg')]">
+  <section class="min-h-screen bg-cover bg-center flex bg-[url('/src/assets/images/hero.jpg')]">
     <!-- OVERLAY CONTENT -->
     <div class="flex-1 bg-black/25 flex items-center justify-center text-center px-6">
       <div class="text-white">
